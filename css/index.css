@@ -12,7 +12,7 @@ body{
 }
 @font-face{
     font-family: "Digital-7 Mono";
-    src: url('Digital-7Mono.TTF');
+    src: url('../Digital-7Mono.TTF');
 }
 #main{
     width: 100%;
