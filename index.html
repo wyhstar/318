@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <title>318</title>
+</head>
+<body>
+    <div id="main">
+		<div id="content">
+			<div id="code">
+				<span class="col_3f7f5f">/**</span><br />
+				<span class="space"/><span class="col_3f7f5f">* I became a small company programmer,</span><br />
+				<span class="space"/><span class="col_3f7f5f">* So I want to wish you a happy birthday in a different way.</span><br />
+				<span class="space"/><span class="col_3f7f5f">*/</span><br />
+				Boy i = <span class="col_7f0055">new</span> Boy(<span class="col_2a36ff">"HeheWang"</span>);<br />
+				Girl u = <span class="col_7f0055">new</span> Girl(<span class="col_2a36ff">"BigBoss"</span>);<br />
+				<span class="col_3f7f5f">// February 20, 2015, I tell you to be my girlfriend. </span><br />
+				i.love(u);<br />
+				<span class="col_3f7f5f">// Forget your facial expression, may be surprised.</span><br />
+				<span class="col_3f7f5f">// Luckily, You took my girlfriend.</span><br />
+				u.agree(i);<br />
+				<span class="col_3f7f5f">// After, I miss u every day.</span><br />
+				i.miss(u);<br />
+				<span class="col_3f7f5f">// And care for u and our love.</span><br />
+				i.carefor(u);<br />
+				<span class="col_3f7f5f">// Until we start to quarrel.</span><br />
+				i.quarrel(u);<br />
+				<span class="col_3f7f5f">// Soon we'll be fine.</span><br />
+				fine(i,u);<br />
+				<span class="col_3f7f5f">// March 18th is your birthday.</span><br />
+				<span class="col_7f0055">number</span> days = <span class="col_7f0055">0</span>;<br />
+				<span class="col_7f0055">while</span> (days < 365) {<br />
+				<span class="ml_15"/>u happy;<br />
+				<span class="ml_15"/>days++<br />
+				<span class="ml_15"/><span class="col_3f7f5f">// I hope u can live a more meaningful life</span><br />
+				<span class="ml_15"/><span class="col_3f7f5f">// And healthy.</span><br />
+				}<br />
+				<span class="col_3f7f5f">// You say that you won't be so easy to marry me.</span><br />
+				<span class="col_3f7f5f">// So I will try my best to let you marry me.</span><br />
+				i tryhard();<br />
+				<span class="col_3f7f5f">// Until one day I can marry you.</span><br />
+				i.marry(u);<br />
+				i.liveHappilyWith(u);<br />
+			</div>
+			<div class="time_box">
+				<section class="bg_1"></section>
+				<section class="bg_2"></section>
+				<section class="bg_3"></section>
+				<section class="bg_4"></section>
+				<section class="bg_5"></section>
+				<div class="messages">
+					JaneAn, I've fallen in love with you
+					<div class="contain"></div>
+				</div>
+				<div class="pertain">
+					Your special driver
+					<br>
+					<div class="per_name">- HeHe</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="lib/jquery.min.js"></script>
+<script>
+	// 循环文字
+    $("#code").each (function() {
+        var $ele = $(this),  // $("#code")
+        str = $ele.html(),   // 先获取$("#code") 的html
+        progress = 0;		// 定义一个变量
+        $ele.html('');		// 清空$("#code")的html
+
+		// 定义一个定时器
+        var timer = setInterval(function() {
+			// substr() 方法可在字符串中抽取从 第一个参数 下标开始的指定数目的字符。
+            var current = str.substr(progress, 1);	//
+            if (current == '<') {
+				// indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+				// 两个参数，第一位指定的字符串，第二是开始检索的位置
+                progress = str.indexOf('>', progress) + 1;
+            } else {
+                progress++;
+            }
+			// substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+            $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+			// 
+            if (progress >= str.length) {
+                clearInterval(timer);
+            }
+        }, 75);
+    });
+
+	setTimeout(function(){
+		startanimate();
+	},6000)
+	// 动画
+	function startanimate(){
+		$(".time_box .bg_1").animate({width:"363px",height:"362px",opacity:"0.8"},2500,"linear",function(){
+			$(".time_box .bg_2").animate({width:"380px",height:"362px"},2500,"linear",function(){
+				$(".time_box .bg_4").animate({height:"190px"},2500,"linear")
+				$(this).animate({width:"419px"});
+			})
+			$(".time_box .bg_3").animate({height:"358px"},2500,"linear",function(){
+				$(".time_box .bg_5").animate({width:"340px"},2500,"linear",function(){
+					$(".time_box section").animate({opacity:"1"},500,function(){
+						$(".messages").css("display","block");
+						$(".messages").animate({opacity:"1"},3000,"linear",function(){
+							$(".pertain").css("display","block");
+							$(".pertain").animate({opacity:"1"},1500,"linear")
+						})
+					});
+					
+				})
+			})
+		})
+	}
+	
+
+	// 计算时间
+	var displayMode = 1;
+    var time;
+
+    $(".contain").click(function(){
+        displayMode *= -1;
+        Time(time, displayMode);
+    });
+
+    // 返回不同月份不同天数的方法
+    function getDaysInMonth(month) {
+        var data = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        return data[month];
+    }
+
+    // 设置开始时间
+    function start(year,month,day,hour,min,sec,mill){
+        var starttime =new Date();
+        starttime.setFullYear(year,month-1,day);
+        starttime.setHours(hour,min,sec,mill);
+        time =starttime;
+        return time;
+    }
+    start(2015,2,20,21,0,0,0);
+    
+    function Time(date,mode){
+        var years = NaN;
+	    var months = NaN;
+
+        var current =new Date();
+        var seconds =(Date.parse(current) - Date.parse(date)) /1000; //获取时间差的秒数
+        var days =Math.floor(seconds / (3600 * 24)); //总天数
+
+        seconds = seconds % (3600 * 24);  //总秒数 % 一天的秒数 下面的同理
+        var hours =Math.floor(seconds / 3600); 
+
+        seconds = seconds % 3600;
+        var minutes = Math.floor(seconds / 60);
+
+        seconds = seconds % 60;
+
+        // 判断假如时分秒小时10的话 前面加0
+        (seconds <10)? seconds ="0"+seconds:seconds=seconds;
+        (hours <10)? hours ="0"+hours:hours=hours;
+        (minutes <10)? minutes ="0"+minutes:minutes=minutes;
+
+        if (mode == 1) {
+            days = current.getDate() - date.getDate(); //当前日 - 开始日
+            if (days < 0) {
+                days += getDaysInMonth(current.getMonth());
+                current.setDate(current.getDate() -1);
+            }
+            months = current.getMonth() - date.getMonth();
+            if (months < 0) {
+                months += 12;
+                current.setFullYear(current.getFullYear() - 1);
+            }
+            years = current.getFullYear() - date.getFullYear();
+        } else {
+            days = Math.floor((current.getTime() - date.getTime()) / (1000 * 3600 * 24));
+        }
+
+        var result = (years > 0 ? "<span class='years'>" + years + "</span> year ":"")
+            result += (months >= 0 ? "<span class='months'>" + months + "</span> month ":"");
+            result += "<span class='days'>" + days + "</span> day ";
+            result += "<span class='hours'>" + hours + "</span> hr "
+            result += "<span class='minutes'>" + minutes + "</span> min "
+            result += "<span class='seconds'>" + seconds + "</span> sec"
+
+        $(".contain").html(result);
+    }
+    Time(time,displayMode);
+    
+    setInterval(function(){
+        Time(time,displayMode);
+    },1000)
+</script>
+</html>
